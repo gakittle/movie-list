@@ -1,9 +1,9 @@
 var path = require('path');
 module.exports = {
-  entry: path.resolve(_dirname, './client/index.jsx'),
+  entry: path.resolve(__dirname, './client/index.jsx'),
   output: {
     filename: 'bundle.js',
-    path: path.resolve(_dirname, './public')
+    path: path.resolve(__dirname, './public')
   },
   mode: 'development',
   devtool: 'inline-source-map',
