@@ -19,7 +19,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <div className="title">Movie List</div>
-        <List movies={this.state.movies} />
+        <List movies={this.state.movies} className="list" />
       </div>
     );
   }
