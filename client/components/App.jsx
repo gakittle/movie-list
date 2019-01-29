@@ -5,7 +5,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: ['Mean Girls', 'Hackers', 'The Grey', 'Sunshine', 'Ex Machina']
+      movies: [
+        { title: 'Mean Girls' },
+        { title: 'Hackers' },
+        { title: 'The Grey' },
+        { title: 'Sunshine' },
+        { title: 'Ex Machina' }
+      ]
     };
   }
 
