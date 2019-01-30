@@ -1,5 +1,6 @@
 import React from 'react';
 import List from './List.jsx';
+import Search from './Search.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class App extends React.Component {
         { title: 'The Grey' },
         { title: 'Sunshine' },
         { title: 'Ex Machina' }
-      ]
+      ],
+      query: ''
     };
   }
 
@@ -19,7 +21,8 @@ class App extends React.Component {
     return (
       <div className="app">
         <div className="title">Movie List</div>
-        <List movies={this.state.movies} className="list" />
+        <Search query={this.state.query} />
+        <List movies={this.state.movies} />
       </div>
     );
   }
