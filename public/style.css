@@ -7,28 +7,33 @@ body {
 }
 
 .app {
-  width: 50%;
-  height: 50%;
+  width: 600px;
+  height: 600px;
   display: block;
   margin: 0 auto;
+  border: 1px solid rgb(194, 194, 194);
 }
 
 .title {
   font-weight: bold;
-  border: 1px solid rgb(194, 194, 194);
-  border-top-width: 3px;
-  border-left-width: 3px;
-  border-right-width: 3px;
+  border-bottom-width: 3px;
   background-color: rgb(243, 243, 243);
   font-size: 150%;
   padding: 10px;
 }
 
 .items {
-  border: 2px solid rgb(194, 194, 194);
+  border: 1px solid rgb(194, 194, 194);
+  width: 80%;
+  margin: 0 auto;
 }
 
 .movie {
-  border: 1px solid rgb(243, 243, 243);
+  border: 1px solid rgb(231, 231, 231);
   padding: 15px;
+}
+
+.search {
+  padding: 25px;
+  margin: 200px auto 0 auto;
 }
