@@ -3,9 +3,11 @@ import ListItem from './ListItem.jsx';
 
 var List = props => (
   <div className="items">
-    {props.movies.map(movie => (
-      <ListItem movie={movie} key={movie.title} />
-    ))}
+    {props.movies.map(movie => {
+      if (movie.show) {
+        return <ListItem movie={movie} key={movie.title} />;
+      }
+    })}
   </div>
 );
 

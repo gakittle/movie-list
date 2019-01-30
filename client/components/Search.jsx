@@ -12,12 +12,15 @@ class Search extends React.Component {
     return (
       <div className="search">
         <form>
+          <input id="field" />
           <input
-            onChange={e => {
-              this.props.query(e);
+            type="submit"
+            value="Go!"
+            onClick={e => {
+              var entered = document.getElementById('field').value;
+              this.props.query(e, entered);
             }}
           />
-          <button type="submit">Go!</button>
         </form>
       </div>
     );
