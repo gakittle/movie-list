@@ -24,6 +24,8 @@ class App extends React.Component {
     event.preventDefault();
 
     var newMovies = this.state.movies;
+    var newBlank;
+    var blanks = 0;
     newMovies.forEach((movie, index) => {
       var movieTitle = movie.title.toLowerCase();
       query = query.toLowerCase();
@@ -32,18 +34,18 @@ class App extends React.Component {
         newMovies[index].show = true;
       } else {
         newMovies[index].show = false;
+        blanks++;
       }
     });
 
-    // if (_.every(newMovies, movie => !movie.show)) {
-    //   $('.items').append(
-    //     "Striker: 'Surely you can't be serious.'\nRumack: 'I am serious...and don't call me Shirley.'"
-    //   );
-    // } else {
-    //   console.log('wipe this message');
-    //   $('.items').removeChild() = '';
-    // }
+    if (blanks === newMovies.length) {
+      newBlank = true;
+    } else {
+      newBlank = false;
+    }
+
     this.setState({ movies: newMovies });
+    this.setState({ blank: newBlank });
   }
 
   render() {
