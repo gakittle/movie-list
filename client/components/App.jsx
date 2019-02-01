@@ -15,7 +15,8 @@ class App extends React.Component {
         { title: 'Sunshine', show: true },
         { title: 'Ex Machina', show: true }
       ],
-      query: ''
+      query: '',
+      blank: false
     };
   }
 
@@ -50,7 +51,7 @@ class App extends React.Component {
       <div className="app">
         <div className="title">Movie List</div>
         <Search query={this.handleSearchClick.bind(this)} />
-        <List movies={this.state.movies} />
+        <List movies={this.state.movies} blank={this.state.blank} />
       </div>
     );
   }
