@@ -3,18 +3,13 @@ import _ from 'underscore';
 import $ from 'jquery';
 import List from './List.jsx';
 import Search from './Search.jsx';
+import AddMovie from './AddMovie.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: [
-        { title: 'Mean Girls', show: true },
-        { title: 'Hackers', show: true },
-        { title: 'The Grey', show: true },
-        { title: 'Sunshine', show: true },
-        { title: 'Ex Machina', show: true }
-      ],
+      movies: [],
       query: '',
       blank: false
     };
@@ -48,10 +43,19 @@ class App extends React.Component {
     this.setState({ blank: newBlank });
   }
 
+  addToList(event, movie) {
+    event.preventDefault();
+    var newMovie = { title: movie, show: true };
+    var allMovies = this.state.movies;
+    allMovies.push(newMovie);
+    this.setState({ movies: allMovies });
+  }
+
   render() {
     return (
       <div className="app">
         <div className="title">Movie List</div>
+        <AddMovie adder={this.addToList.bind(this)} />
         <Search query={this.handleSearchClick.bind(this)} />
         <List movies={this.state.movies} blank={this.state.blank} />
       </div>
