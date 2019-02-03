@@ -35,5 +35,26 @@ body {
 
 .search {
   padding: 25px;
-  margin: 200px auto 0 auto;
+  margin: 20px auto 0 auto;
+}
+
+#add {
+  margin-top: 20px;
+}
+
+.movieTitle {
+  display: inline
+}
+
+.watcher,
+.watched {
+  background-color: rgb(0, 195, 0);
+  color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.watched {
+  float: right;
+  display: inline;
 }
