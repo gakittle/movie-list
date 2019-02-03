@@ -1,18 +1,18 @@
 import React from 'react';
 
-var ListItem = props => {
+var ListItem = ({ movie, watchItem }) => {
+  const { title, wasWatched } = movie;
   var buttonMsg;
-  if (props.movie.wasWatched) {
+  if (wasWatched) {
     buttonMsg = 'Encore!';
   } else {
     buttonMsg = 'Watched!';
   }
   return (
     <div className="movie">
-      <div className="movieTitle" >{props.movie.title}</div>
-      <button className="watched" id={props.movie.title} onClick={(e) => {
-        var title = props.movie.title;
-        props.watchItem(e, title);
+      <div className="movieTitle" >{title}</div>
+      <button className="watched" id={title} onClick={(e) => {
+        watchItem(e, title);
       }}>{buttonMsg}</button>
     </div>
   );
