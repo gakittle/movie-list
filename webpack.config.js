@@ -7,6 +7,9 @@ module.exports = {
   },
   mode: 'development',
   devtool: 'inline-source-map',
+  watchOptions: {
+    poll: true
+  },
   module: {
     rules: [
       {
@@ -16,7 +19,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react']
-          }
+          },
         }
       }
     ]
