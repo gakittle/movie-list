@@ -46,6 +46,14 @@ class App extends React.Component {
 
   addToList(event, movie) {
     event.preventDefault();
+    var duplicates = this.state.movies.filter((film) => {
+      console.log(film, movie);
+      return film.title === movie;
+    });
+    if (duplicates.length > 0) {
+      alert('"What we\'ve got here is failure to communicate." \nWe already have this movie in the list!');
+      return;
+    }
     var newMovie = { title: movie, show: true, wasWatched: false };
     var allMovies = this.state.movies;
     allMovies.push(newMovie);
