@@ -8,7 +8,7 @@ var AddMovie = props => {
         <input
           type="submit"
           value="Add!"
-          id="add"
+          id="add-btn"
           onClick={e => {
             var entered = document.getElementById('adder').value;
             props.adder(e, entered);

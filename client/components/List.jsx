@@ -9,10 +9,28 @@ var List = props => {
   }
   return (
     <div className="items">
+      <div>
+        <button
+          className="watcher"
+          onClick={e => {
+            props.watcher(e, true);
+          }}
+        >
+          Watched
+        </button>
+        <button
+          className="watcher"
+          onClick={e => {
+            props.watcher(e, false);
+          }}
+        >
+          To Watch
+        </button>
+      </div>
       <div>{blankMsg}</div>
       {props.movies.map(movie => {
-        if (movie.show) {
-          return <ListItem movie={movie} key={movie.title} />;
+        if (movie.show && movie.wasWatched === props.watch) {
+          return <ListItem movie={movie} key={movie.title} watchItem={props.watchItem} />;
         }
       })}
     </div>

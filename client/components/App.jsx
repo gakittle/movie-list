@@ -11,7 +11,8 @@ class App extends React.Component {
     this.state = {
       movies: [],
       query: '',
-      blank: false
+      blank: false,
+      wasWatched: false
     };
   }
 
@@ -45,10 +46,26 @@ class App extends React.Component {
 
   addToList(event, movie) {
     event.preventDefault();
-    var newMovie = { title: movie, show: true };
+    var newMovie = { title: movie, show: true, wasWatched: false };
     var allMovies = this.state.movies;
     allMovies.push(newMovie);
     this.setState({ movies: allMovies });
+  }
+
+  toggleWatchList(event, haveWatched) {
+    event.preventDefault();
+    this.setState({wasWatched: haveWatched});
+  }
+
+  toggleWatchedItem(event, movie) {
+    event.preventDefault();
+    var newMovies = this.state.movies;
+    newMovies.forEach((film) => {
+      if (film.title === movie) {
+        film.wasWatched = !film.wasWatched;
+      }
+    });
+    this.setState({movies: newMovies});
   }
 
   render() {
@@ -56,8 +73,16 @@ class App extends React.Component {
       <div className="app">
         <div className="title">Movie List</div>
         <AddMovie adder={this.addToList.bind(this)} />
+
         <Search query={this.handleSearchClick.bind(this)} />
-        <List movies={this.state.movies} blank={this.state.blank} />
+
+        <List
+          movies={this.state.movies}
+          blank={this.state.blank}
+          watch={this.state.wasWatched}
+          watcher={this.toggleWatchList.bind(this)}
+          watchItem={this.toggleWatchedItem.bind(this)}
+        />
       </div>
     );
   }
