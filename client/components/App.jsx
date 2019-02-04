@@ -53,11 +53,21 @@ class App extends React.Component {
       alert('"What we\'ve got here is failure to communicate." \nWe already have this movie in the list!');
       return;
     }
+    $.ajax({
+      url: 'http://localhost:3000/movies',
+      method: 'POST',
+      data: {query: movie},
+      success: (data) => {
+        console.log('These arent the films your looking for: ', data);
+      },
+      error: (err) => (console.error('Error: ', err))
+    });
     var newMovie = {
       title: movie,
       show: true,
       wasWatched: false,
-      selected: false
+      selected: false,
+      data: null,
     };
     var allMovies = this.state.movies;
     allMovies.push(newMovie);
@@ -114,6 +124,8 @@ class App extends React.Component {
           watchItem={this.toggleWatchedItem.bind(this)}
           dropDown={this.toggleDropDown.bind(this)}
         />
+
+        <img src="moveDb.png" id="pic" />
       </div>
     );
   }
