@@ -30,7 +30,7 @@ var List = props => {
       <div>{blankMsg}</div>
       {props.movies.map(movie => {
         if (movie.show && movie.wasWatched === props.watch) {
-          return <ListItem movie={movie} key={movie.title} watchItem={props.watchItem} />;
+          return <ListItem movie={movie} key={movie.title} watchItem={props.watchItem} dropDown={props.dropDown} />;
         }
       })}
     </div>

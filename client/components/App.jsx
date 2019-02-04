@@ -47,14 +47,18 @@ class App extends React.Component {
   addToList(event, movie) {
     event.preventDefault();
     var duplicates = this.state.movies.filter((film) => {
-      console.log(film, movie);
       return film.title === movie;
     });
     if (duplicates.length > 0) {
       alert('"What we\'ve got here is failure to communicate." \nWe already have this movie in the list!');
       return;
     }
-    var newMovie = { title: movie, show: true, wasWatched: false };
+    var newMovie = {
+      title: movie,
+      show: true,
+      wasWatched: false,
+      selected: false
+    };
     var allMovies = this.state.movies;
     allMovies.push(newMovie);
     this.setState({ movies: allMovies });
@@ -63,6 +67,11 @@ class App extends React.Component {
   toggleWatchList(event, haveWatched) {
     event.preventDefault();
     this.setState({wasWatched: haveWatched});
+    var newMovies = this.state.movies;
+    newMovies.forEach((film) => {
+      film.selected = false;
+    });
+    this.setState({movies: newMovies});
   }
 
   toggleWatchedItem(event, movie) {
@@ -71,6 +80,19 @@ class App extends React.Component {
     newMovies.forEach((film) => {
       if (film.title === movie) {
         film.wasWatched = !film.wasWatched;
+      }
+    });
+    this.setState({movies: newMovies});
+  }
+
+  toggleDropDown(event, movie) {
+    event.preventDefault();
+    var newMovies = this.state.movies;
+    newMovies.forEach((film) => {
+      if (film.title === movie) {
+        film.selected = !film.selected;
+      } else {
+        film.selected = false;
       }
     });
     this.setState({movies: newMovies});
@@ -90,6 +112,7 @@ class App extends React.Component {
           watch={this.state.wasWatched}
           watcher={this.toggleWatchList.bind(this)}
           watchItem={this.toggleWatchedItem.bind(this)}
+          dropDown={this.toggleDropDown.bind(this)}
         />
       </div>
     );
