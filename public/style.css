@@ -58,3 +58,9 @@ body {
   float: right;
   display: inline;
 }
+
+#pic {
+  margin-top: 35px;
+  height: 60px;
+  width: 60px
+}
